@@ -6,7 +6,7 @@ This project demonstrates the design and implementation of an end-to-end ETL pip
 
 The solution showcases various real-world data engineering concepts such as on-premises to cloud migration, API-based data ingestion, modern incremental loading without traditional watermark tables, and data transformation using Mapping Data Flows. The transformed data is stored in Delta format within the data lake and further processed to generate business-ready datasets in the Gold layer for reporting and analytics.
 
-To automate the entire workflow, Azure Data Factory pipelines are orchestrated through a parent pipeline, which can be run on-demand or extended with scheduled triggers for full automation. A Self-hosted Integration Runtime enables secure connectivity between the on-premises environment and Azure resources.
+Azure Data Factory pipelines are orchestrated through a parent pipeline, which can be run on-demand or extended with scheduled triggers for full automation. A Self-hosted Integration Runtime enables secure connectivity between the on-premises environment and Azure resources. The project demonstrates how Azure Data Factory can be used to build scalable and maintainable data engineering pipelines using cloud-native services.
 
 ---
 
