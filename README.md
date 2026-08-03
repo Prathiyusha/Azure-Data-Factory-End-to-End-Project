@@ -6,7 +6,7 @@ This project demonstrates the design and implementation of an end-to-end ETL pip
 
 The solution showcases various real-world data engineering concepts such as on-premises to cloud migration, API-based data ingestion, modern incremental loading without traditional watermark tables, and data transformation using Mapping Data Flows. The transformed data is stored in Delta format within the data lake and further processed to generate business-ready datasets in the Gold layer for reporting and analytics.
 
-Azure Data Factory pipelines are orchestrated through a parent pipeline, which can be run on-demand or extended with scheduled triggers for full automation. A Self-hosted Integration Runtime enables secure connectivity between the on-premises environment and Azure resources. The project demonstrates how Azure Data Factory can be used to build scalable and maintainable data engineering pipelines using cloud-native services.
+The on-premises, GitHub API, and Azure SQL ingestion pipelines are orchestrated through a Parent Pipeline. The Silver and Gold Mapping Data Flow pipelines were created and executed separately. A Self-hosted Integration Runtime enables secure connectivity between the on-premises environment and Azure resources. The project demonstrates how Azure Data Factory can be used to build scalable and maintainable data engineering pipelines using cloud-native services.
 
 ---
 
@@ -53,21 +53,10 @@ Azure Data Factory pipelines are orchestrated through a parent pipeline, which c
    - Perform business calculations and ranking operations.
    - Store curated, business-ready data in the Gold layer for downstream reporting and analytics.
 
-5. **Pipeline Orchestration & Scheduling**
-   - Integrate all ingestion and transformation pipelines into a Parent Pipeline.
-   - Executed on-demand; can be extended with Azure Data Factory Triggers for scheduled automation.
-
----
-
-## ⚠️ Challenges Faced
-
-- While building the **Mapping Data Flow**, I initially configured the left stream incorrectly. Since I had deleted the existing flow, I had to recreate the entire data flow from scratch.
-
-- Debugging the **Mapping Data Flow** was challenging, as incorrect column selections sometimes produced unexpected outputs. Identifying and correcting these mapping issues required careful validation and testing.
-
-- Configuring the **ForEach** activity in Azure Data Factory required additional learning, particularly in understanding parameter passing and dynamic content expressions to ensure the pipeline executed correctly.
-
-- During the initial development, I configured the **Retry** policy with a value of **2** for pipeline activities. This resulted in unnecessary Azure execution costs. After understanding its impact, I optimized the retry settings by using **0** for non-critical activities and **1** for critical activities to balance reliability and cost.
+5. **Pipeline Orchestration**
+   - Integrated the on-premises, GitHub API, and Azure SQL ingestion pipelines into a Parent Pipeline.
+   - Created separate Silver and Gold pipelines to execute the Mapping Data Flows.
+   - Executed the pipelines on-demand; scheduled triggers were not implemented.
 
 ---
 
